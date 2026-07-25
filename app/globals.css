@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-night text-parchment font-body;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-ember/30 text-parchment;
+  }
+  :focus-visible {
+    outline: 2px solid #E8927C;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .pulse-ring {
+    @apply relative flex items-center justify-center;
+  }
+  .pulse-ring::before {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-ember/40 animate-breathe;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-ring::before {
+      animation: none;
+      opacity: 0.5;
+    }
+  }
+}
